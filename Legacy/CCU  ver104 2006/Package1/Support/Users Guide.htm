@@ -1,0 +1,240 @@
+<HTML>
+<HEAD>
+  <META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=windows-1252">
+  <TITLE>NJGS DGS03-1 Users Guide</TITLE>
+</HEAD>
+<BODY bgcolor="#ffffff">
+<P>
+<B><FONT size="+6" color="#0000A0">New Jersey Geological Survey</FONT><BR>
+<FONT SIZE=+3>Coordinate Conversion Utility<BR>
+Version 1.0.4</FONT></B>
+<P>
+<FONT SIZE=+1>Programed by: William Mennel<BR>
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
+&nbsp; &nbsp; email: Bill.Mennel@dep.state.nj.us<BR>
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
+&nbsp; &nbsp; James Boyle<BR>
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
+&nbsp; &nbsp; email: Jim.Boyle@dep.state.nj.us<BR>
+New Jersey Geological Survey<BR>
+http://www.state.nj.us/dep/njgs</FONT>
+<P>
+<B>This program is provided and may be utilizied without charge.<BR>
+No warranty, expressed or implied, is provided as to the serviceability<BR>
+or usefulness of this program.</B>
+<P>
+<B><FONT SIZE=+3>USERS GUIDE</FONT></B>
+<BLOCKQUOTE>
+  <B><FONT SIZE=+2>Contents</FONT></B>
+  <BLOCKQUOTE>
+    <B><FONT SIZE=2><FONT size="4"><A href="#limit">Limitations</A><BR>
+    <A href="#cec">Coordinate Entry Conventions</A><BR>
+    <A href="#ascs">Atlas Sheet Coordinate System</A><BR>
+    <A href="#spcs">State Plane Coordinate System (SPCS)</A><BR>
+    <A href="#nad">NAD27 &lt;=&gt; NAD83</A><BR>
+    <A href="#refer">References</A></FONT><BR>
+    </FONT></B>
+  </BLOCKQUOTE>
+</BLOCKQUOTE>
+<H1>
+  <B><FONT size="4">Limitations </FONT></B>
+</H1>
+<P>
+<FONT SIZE=2>This program was designed to convert New Jersey State plane
+coordinates (NAD83) to latitude and longitude (NAD27 and NAD83). The geographic
+area for which this conversion will work is bounded on the east by longitude
+73&#176; 37' 30" and on the west by 75&#176; 37" 30". It is bounded on the
+south by latitude 38&#176; 45' 00" and on the north by 41&#176; 22' 30".
+This conversion is for the horizontal coordinates and does not address the
+vertical coordinate. </FONT>
+<P>
+<FONT SIZE=2>&nbsp;</FONT>
+<H2>
+  <FONT size="4"><A name="cec"></A><B>Coordinate Entry Conventions</B></FONT>
+</H2>
+<P>
+<FONT SIZE=2><B>State Plane Coordinates (Easting &amp; Northing)</B></FONT>
+<P>
+<FONT SIZE=2>State plane coordinates are NAD83 datum points. The easting
+and northing are to be entered in US survey feet with up to three decimal
+places.</FONT>
+<P>
+<FONT SIZE=2><B>Geographic Coordinates (Latitude &amp; Longitude)</B></FONT>
+<P>
+<FONT SIZE=2>Latitude and longitude can be in either NAD27 or NAD83. They
+can be entered as either decimal degrees or as degrees, minutes, and decimal
+seconds. If entered as decimal degrees at least five decimal places should
+be entered. If entered as degrees, minutes, and decimal seconds the value
+needs to be entered without spaces between the units and with leading zeros
+in the minutes and seconds for values less than ten. Up to three decimal
+places may be entered. The longitude is always entered as a positive value
+without a leading zero.</FONT>
+<P>
+<FONT SIZE=2><B>Atlas Sheet Coordinates</B></FONT>
+<P>
+<FONT SIZE=2>The Atlas Sheet coordinate is a seven-digit number. All seven-digits
+must be entered. Entry is controlled by the use of a mask. The second pair
+of digits, which represent a specific block on the atlas sheet, must be entered
+with a leading zero for blocks one through five. These coordinates are based
+on NAD27 so the latitude and longitude generated are NAD27.</FONT>
+<P>
+<B><SMALL>Batch Conversion</SMALL> </B>
+<P>
+The batch allows for the input of state plane, latitude/longitude, or atlas
+sheet coordinates for conversion. The file to be converted must be an ASCII
+delimited text file. The format of the file for converting state plane or
+latitude/longitude is <FONT COLOR="Red"><B>Id, Y-coordinate (Northing or
+Latitude), X-coordinate (Easting or
+Longitude)</B></FONT><FONT COLOR="Black">. </FONT>
+<P>
+Example: 3164855, 368154.62, 312006.32
+<P>
+The format of the file for converting atlas sheet coordinates&nbsp;(ASC)
+is <FONT COLOR="Red"><B>Id, ASC</B></FONT><FONT COLOR="Black">.</FONT> The
+ASC coordinate must have a seperators between the Sheet Number, Block Number
+and Rectangle Number.
+<P>
+Example: 3164855, 31:02:229
+<P>
+The Block Numbers must use leading zeros for blocks 1 through 5. The Rectangle
+Number can not contain zeros for any of the values. If the complete three
+digit Rectangle Number is unknown the trailing zeros can be replace with
+the value 5 to obtain the location of the center of the next larger rectangle.
+This however in creases the size of the area represented by the ACS.
+<P>
+Select the Input coordinates, datum and units in the boxes for your data
+file and then press the "Run batch" button. Navigate to the file folder of
+your file. Select it and press the "Open" button.
+<P>
+The output file created is an ASCII delimited text file called "convert.dat"
+and is located in the same folder as the input file. The format for this
+file is Id, Northing, Easting, Latitude (NAD83), Longitude (NAD83), Latitude
+(NAD27), Longitude (NAD27), Atlas Sheet Coordinate, USGS Quadrangle Name.
+Also created is a file called "problem.dat" which lists any points which
+were not converted.
+<FORM name="form1" >
+  <DIV align="center">
+    <INPUT type="submit" name="Return6" value="Top">
+  </DIV>
+</FORM>
+<H3>
+  <FONT size="4"><B><A name="ascs"></A>Atlas Sheet Coordinate System</B></FONT>
+</H3>
+<P>
+<FONT SIZE=2> The New Jersey Geological Survey (NJGS) developed a location
+system, known as the New Jersey Atlas Sheet Coordinate System (ASCS)
+(<A href="#refer">K&uuml;mmel, 1912, p.13 and K&uuml;mmel, 1913, p 13</A>).
+The ASCS was designed to be easier to use and understand than the latitude
+and longitude system.</FONT>
+<P>
+<FONT SIZE=2> The Atlas Sheets, on a scale of 1:63,360, or 1 inch per mile,
+are the basis of the system. The sheets are numbered from 21 to 37, and are
+divided into rectangles, each covering, 2 minutes of latitude and longitude.
+Each Atlas Sheet spans 28 degrees of latitude and 26 degrees of longitude,
+making 13 rectangles from east to west and 14 from north to south.</FONT>
+<P>
+<SMALL>Every third line of latitude and longitude delineates a 6-minute block,
+for 16 complete blocks, each containing 9 smaller 2-minute rectangles. Beginning
+in the upper left-hand corner, these blocks are numbered across the sheet
+01 to 04. The blocks of the second row are numbered 11 to 14, those of the
+third row 21 to 24, of the fourth row 31 to 34. </SMALL>
+<P>
+<FONT SIZE=2><SMALL> </SMALL></FONT><SMALL>In addition to the 16 complete
+6-minute blocks there is, along the right-hand side of the sheet, a single
+row of 2-minute rectangles and along the bottom, a double row of 2-minute
+rectangles. The incomplete blocks of the fifth row at the bottom, 41 to 44,
+contain 6 of the 2-minute rectangles. The blocks along the right (vertical)
+side (05, 15, 25, and 35) each contain 3 of the 2-minute rectangles. Block
+45 in the lower right corner contains only 2 of the 2-minute rectangles.
+The arrangement and numbering of these blocks form the primary divisions
+of each atlas sheet. </SMALL>
+<P>
+<FONT SIZE=2> The nine 2-minute rectangles in each of the complete blocks
+are numbered from 1 to 9, beginning in the upper left-hand corner, and numbered
+to the right, 4 being on the left under 1. The subdivision of the rectangles
+for the incomplete blocks at the right are numbered 1, 4, and 7; and those
+at the bottom 1, 2, 3, 4, 5, and 6; and of block 45 in the lower right corner
+1 and 4.</FONT>
+<P>
+<FONT SIZE=2> A further subdivision of each of these rectangles into squares
+and units is necessary in order to fix locations to an area of approximately
+30 acres, and these subdivisions are likewise numbered 1 to 9.</FONT>
+<P>
+<FONT SIZE=2> If the number of the atlas sheet is followed by the number
+of each of these smaller divisions or units, each 30 acre parcel in the State
+acquires a unique 7 digit number. The number enables any point to be located
+quickly on any atlas sheet.</FONT>
+<FORM name="form1" >
+  <DIV align="center">
+    <INPUT type="submit" name="Return2" value="Top">
+  </DIV>
+</FORM>
+<P>
+<FONT SIZE=2><IMG src="fig2a.gif" width="463" height="796"></FONT>
+<P align="center">
+<FONT SIZE=2>&nbsp; </FONT>
+<H4>
+  <FONT size="3"><B><FONT size="4"><A name="spcs"></A>State Plane Coordinate
+  System (SPCS)</FONT></B></FONT>
+</H4>
+<P>
+<FONT SIZE=2>It is impossible to map a curved Earth on a flat map using plane
+coordinates (x,y or northing, easting) without distorting angles, distances,
+or areas. It is possible to design a map projection such that some of the
+three are undisturbed or minimally distorted. The State Plane Coordinate
+System (SPCS) is a map projection system that minimizes angular distortions
+if only a small portion of the earth is flattened out. Thus, the SPCS is
+a rectangular (x,y or northing, easting) coordinate system describing geodetic
+positions of a limited area (a state or a portion of it) on a plane. The
+(x,y) coordinates are computed by projecting latitudes and longitudes from
+a mathematical approximation of the earth (i.e., NAD83) onto a rectangular
+grid. </FONT>
+<P>
+<FONT SIZE=2>By law, the New Jersey State Plane Coordinate System (based
+on NAD83) is the official survey base for the State of New Jersey
+(R.S.51:3-7).</FONT>
+<P align="center">
+<FONT SIZE=2>&nbsp; </FONT>
+<H5>
+  <FONT size="4"><A name="nad"></A><B>NAD27 &lt;=&gt; NAD83</B></FONT>
+</H5>
+<P>
+<FONT SIZE=2>The coordinate reference system North American Datum of 1927
+(NAD27) was adopted in 1913 and is based on the Clarke reference ellipsoid.
+The Geodetic survey station MEADES RANCH in Osborne County, Kansas, was selected
+as the reference point for this datum. </FONT>
+<P>
+<FONT SIZE=2>With the development of global positioning system (GPS), the
+capability was provided for obtaining more precise positional data. GPS data
+was "forced" to fit the original NAD27 network, which caused distortions
+in the positional data. </FONT>
+<P>
+<FONT SIZE=2>The development of the NAD83 included both a readjustment of
+the survey observations and a redefinition of the datum. This new datum was
+defined using the Geodetic Reference System 1980 (GRS80) as the reference
+ellipsoid. The GRS80 ellipsoid is geocentric and more closely approximates
+the true size and shape of the Earth. A readjustment was also done using
+a simultaneous least-squares method of adjustment to minimize mathematical
+distortions. This x,y coordinate shift can exceed 400 meters in some parts
+of the country.</FONT>
+<P>
+<FONT SIZE=2>Locations obtained using GPS receivers are in NAD83 as are Digital
+Ortho Photo quads. Older digital data products such as US Geological Survey
+(USGS) Digital Line Graph data (digital representation of features found
+on USGS quad maps) are generally NAD27.</FONT>
+<FORM name="form1" >
+  <DIV align="center">
+    <INPUT type="submit" name="Return3" value="Top">
+  </DIV>
+</FORM>
+<P>
+<H1>
+  <B><FONT size="4"><A name="refer"></A>References </FONT></B>
+</H1>
+<P>
+<FONT SIZE=2>K&uuml;mmel, Henry B., 1912, Annual Administrative Report of
+the State Geologist for the year 1911, NJGS Bulletin 6, 82 p. <BR>
+K&uuml;mmel, Henry B., 1913, Annual Administrative Report of the State Geologist
+for the year 1912, NJGS Bulletin 8, 103 p. <BR>
+</FONT>
+</BODY></HTML>

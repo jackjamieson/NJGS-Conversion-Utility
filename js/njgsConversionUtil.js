@@ -372,21 +372,6 @@ function atlasConversion(first, secondFirstDigit, secondSecondDigit, thirdFirstD
 	
 		latDMS = degLatD + "" + degLatM + "" + degLatS + "";
 		lonDMS = degLonD + "" + degLonM + "" + degLonS + "";
-		/*
-		if(causedErr == false)
-			divDMS.innerHTML = "<strong>ddmmss.ss (NAD27):</strong>" + "Latitude: " + degLatD + "" + degLatM + "" + degLatS + " Longitude: -" + degLonD + "" + degLonM + "" + degLonS + "";
-		else 
-			divDMS.innerHTML = "<strong>ddmmss.ss (NAD27):</strong>";
-	
-		*/
-		/*
-		var quad = (findQuad(Number("" + degLatD + degLatM + degLatS), Number("" + degLonD + degLonM + degLonS)));
-		//console.log(findQuad(Number("" + degLatD + degLatM + degLatS), Number("" + degLonD + degLonM + degLonS)));
-		//var quad = (findQuad(400353, 743953));
-
-		if(causedErr == false)
-			divQuad.innerHTML = "<strong>USGS Quadrangle: </strong>" + quad;
-		*/
 		
 		return true;
 } 
